@@ -20,7 +20,6 @@ import {
 
 const router = Router();
 
-// API test bypass for all POST endpoints
 router.use((req, res, next) => {
   const isPostTest =
     req.method === "POST" && req.body && req.body.test === "API_TEST";

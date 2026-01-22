@@ -20,7 +20,6 @@ logger.silent = true;
 const { runTests } = await import("./apitest.js");
 await runTests();
 logger.silent = false;
-// restore HTTP logging
 process.env.SILENT_HTTP_LOGS = "false";
 
 Logger.info("✓ Pre-flight tests completed");

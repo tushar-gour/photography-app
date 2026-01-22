@@ -30,7 +30,6 @@ const apiTests = [
 
 async function testAPI(method, path, name) {
   let url = `${API_URL}${path}`;
-  // Append query sentinel for non-POST methods so router-level bypass can respond OK
   if (method !== "POST") {
     url += path.includes("?") ? "&test=API_TEST" : "?test=API_TEST";
   }
@@ -50,8 +49,6 @@ async function testAPI(method, path, name) {
     const diff = process.hrtime(start);
     const ms = (diff[0] * 1e3 + diff[1] / 1e6).toFixed(3);
     let symbol, color;
-    // Treat a literal "OK" response as success.
-    // Additionally treat GET endpoints that return JSON with { success: true } or { ok: true } as success (health endpoint).
     if (response && response.data === "OK") {
       symbol = "✓";
       color = "\x1b[32m";
