@@ -17,7 +17,7 @@ const server = await initializeServer();
 
 Logger.info("✓ Server started. Running API tests...\n");
 logger.silent = true;
-const { runTests } = await import("./api.test.js");
+const { runTests } = await import("./apitest.js");
 await runTests();
 logger.silent = false;
 // restore HTTP logging
